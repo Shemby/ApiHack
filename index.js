@@ -26,6 +26,9 @@ function getResults(userInput){
 function display(responseJson){
     console.log(responseJson);
     $('#resultsList').empty();
+    $('#resultsList').html(responseJson.data.verses.map(o => {
+        return `<h1>${o.reference}:${o.text}</h1>`;
+    }));
 }
 function listen() {
     $('form').submit (event => {
