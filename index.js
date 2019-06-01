@@ -6,50 +6,24 @@ const myHeaders = new Headers();
 
 function getSearch(userInput){
     $('.daily').addClass('hidden');
-    const url = `${baseUrl}/search?query=${userInput}`;
     $('#results').removeClass('hidden');
-    fetch(url,{
-        headers: myHeaders
-    })
-        .then(response => {
-            if (response.ok) {
-            return response.json();   
-            }
-        throw new Error(response.statusText);
-        })
-    .then(displaySearch)
-    .catch(err => {
-        $('#error-message').text(`something went wrong: ${err.message}`);
-    });
+   goFetch(`/search?query=${userInput}`, displaySearch);
 }
 function getChapter(event){
     event.preventDefault();
     const chapterLink = $(event.target);
     const chapterId = chapterLink.data('chapter');
-    const url =`${baseUrl}/chapters/${chapterId}`;
-    fetch(url,{
-        headers: myHeaders
-    })
-        .then(response =>{
-            if(response.ok){
-                return response.json();
-            }
-        throw new Error(response.statusText);
-        })
-    .then(displayChapter)
-    .catch(err => {
-        $('#error-message').text(`something went wrong: ${err.message}`);
-    });
-
+    goFetch(`/chapters/${chapterId}`, displayChapter);
 }
 function displayChapter(responseJson){
     console.log(responseJson);
     $('#results').addClass('hidden');
-    $('#resultsList').html(`<li class='chapterResponse'><h1>${responseJson.data.reference}</h1>
-    <p>${responseJson.data.content}</p></li>`);
+    $('#chapter').removeClass('hidden').html(`
+    <h1>${responseJson.data.reference}</h1>
+    <p><a href="" class="return-link"><-- Return to search results</a></p>
+    <p>${responseJson.data.content}</p>`);
 }
 function displaySearch(responseJson){
-    console.log(responseJson);
     let totalResults = responseJson.data.total;
     if (totalResults>0){
     $('#resultsList').html(responseJson.data.verses.map(o => {
@@ -60,6 +34,23 @@ function displaySearch(responseJson){
     else{
         $('#resultsList').html(`<h3>Your search returned no results.</h3>`)
 }}
+function goFetch(query, display){
+    const url = `${baseUrl}${query}`;
+    console.log(url);
+    return fetch(url,{
+        headers: myHeaders
+    })
+        .then(response => {
+            if (response.ok) {
+            return response.json();   
+            }
+        throw new Error(response.statusText);
+        })
+    .then(display)
+    .catch(err => {
+        $('#error-message').text(`something went wrong: ${err.message}`);
+    });
+    }
 function listen() {
     $('form').submit (event => {
         event.preventDefault();
@@ -67,5 +58,14 @@ function listen() {
         getSearch(userInput);
     })
     $('#resultsList').on('click', '.chapter-link', getChapter);
+
+    $('#chapter').on('click', '.return-link', (event) =>{
+        event.preventDefault();
+        $('#results').removeClass('hidden');
+        $('#chapter').addClass('hidden');
+    });
+
+
+    
 }
 $(listen);

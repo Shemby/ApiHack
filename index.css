@@ -6,3 +6,10 @@
 .hidden{
     display: none;
 }
+body{
+    margin: auto;
+    width: 50%;
+}
+form, .heading{
+    text-align: center;
+}

@@ -37,24 +37,9 @@ function getDaily(){
     let today = new Date();
     let dd = (today.getDate());
     let todaysVerse = VERSES[dd-1];
-    console.log(todaysVerse);
-    let url = `${baseUrl}/verses/${todaysVerse}`;
-    fetch(url,{
-        headers: myHeaders
-    })
-        .then(response =>{
-            if(response.ok){
-                return response.json();
-            }
-        throw new Error(response.statusText);
-        })
-    .then(displayDaily)
-    .catch(err => {
-        $('#error-message').text(`something went wrong: ${err.message}`);
-    });
+    goFetch(`/verses/${todaysVerse}`, displayDaily);
 }
 function displayDaily(responseJson){
-    console.log(responseJson);
     $('#dailyVerse').html(`<li><h1>${responseJson.data.reference}</h1>
     <p>${responseJson.data.content}</p></li>`);
 }
