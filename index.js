@@ -63,9 +63,6 @@ function listen() {
         event.preventDefault();
         $('#results').removeClass('hidden');
         $('#chapter').addClass('hidden');
-    });
-
-
-    
+    }); 
 }
 $(listen);
