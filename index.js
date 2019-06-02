@@ -27,8 +27,12 @@ function displaySearch(responseJson){
     let totalResults = responseJson.data.total;
     if (totalResults>0){
     $('#resultsList').html(responseJson.data.verses.map(o => {
-        return `<li><h3>${o.reference}</h3><p>"${o.text}"</p><a href=""
-        class='chapter-link' data-chapter='${o.chapterId}'>view entire chapter</a></li>`;
+        return `
+        <li>
+        <h3>${o.reference}</h3>
+        <p>"${o.text}"</p>
+        <a href=""class='chapter-link' data-chapter='${o.chapterId}'>view entire chapter</a>
+        </li>`;
     }));
 }
     else{
