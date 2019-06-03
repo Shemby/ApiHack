@@ -9,16 +9,15 @@ function getSearch(userInput){
     $('#results').removeClass('hidden');
    goFetch(`/search?query=${userInput}`, displaySearch);
 }
-function getChapter(event){
+function getContext(event){
     event.preventDefault();
-    const chapterLink = $(event.target);
-    const chapterId = chapterLink.data('chapter');
-    goFetch(`/chapters/${chapterId}`, displayChapter);
+    const contextLink = $(event.target);
+    const contextId = contextLink.data('context');
+    goFetch(`/chapters/${contextId}`, displayContext);
 }
-function displayChapter(responseJson){
-    console.log(responseJson);
+function displayContext(responseJson){
     $('#results').addClass('hidden');
-    $('#chapter').removeClass('hidden').html(`
+    $('#context').removeClass('hidden').html(`
     <h1>${responseJson.data.reference}</h1>
     <p><a href="" class="return-link"><-- Return to search results</a></p>
     <p>${responseJson.data.content}</p>`);
@@ -31,7 +30,7 @@ function displaySearch(responseJson){
         <li>
         <h3>${o.reference}</h3>
         <p>"${o.text}"</p>
-        <a href=""class='chapter-link' data-chapter='${o.chapterId}'>view entire chapter</a>
+        <a href=""class='context-link' data-context='${o.chapterId}'>view entire chapter</a>
         </li>`;
     }));
 }
@@ -40,7 +39,6 @@ function displaySearch(responseJson){
 }}
 function goFetch(query, display){
     const url = `${baseUrl}${query}`;
-    console.log(url);
     return fetch(url,{
         headers: myHeaders
     })
@@ -55,18 +53,73 @@ function goFetch(query, display){
         $('#error-message').text(`something went wrong: ${err.message}`);
     });
     }
+
+    function home(){
+        $('#bible').addClass('hidden');
+        $('#search').addClass('hidden');
+        $('#daily').removeClass('hidden')
+    }
+    function bible(){
+        $('#search').addClass('hidden');
+        $('#daily').addClass('hidden');
+        $('#bible').removeClass('hidden')
+    }
+    function search(){
+        $('#daily').addClass('hidden');
+        $('#bible').addClass('hidden');
+        $('#search').removeClass('hidden')
+    }
+
 function listen() {
     $('form').submit (event => {
         event.preventDefault();
         const userInput = $('#searchQuery').val();
         getSearch(userInput);
     })
-    $('#resultsList').on('click', '.chapter-link', getChapter);
 
-    $('#chapter').on('click', '.return-link', (event) =>{
+    $('body').on('click', '#home', home);
+    $('body').on('click', '#read', bible);
+    $('body').on('click', '#topic', search);
+
+    $('#resultsList').on('click', '.context-link', getContext);
+
+    $('#books').on('click', '.book-link', getChapters);
+    $('#chapters').on('click', '.chapter-link', getVerses);
+
+
+    $('#context').on('click', '.return-link', (event) =>{
         event.preventDefault();
         $('#results').removeClass('hidden');
-        $('#chapter').addClass('hidden');
-    }); 
+        $('#context').addClass('hidden');
+    });
+
+    $('#bible').on('click', '.book-link', (event)=>{
+        event.preventDefault();
+        $('.books').addClass('hidden');
+    });
+
+    $('#bible').on('click', '.chapter-link', (event)=>{
+        event.preventDefault();
+        $('#chapters').addClass('hidden');
+    });
 }
 $(listen);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

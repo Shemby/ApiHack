@@ -11,20 +11,45 @@
     <title>Bible API Project</title>
 </head>
 <body>
+    <nav>
+        <ul class='links'>
+            <li><a class=link id='home' href='#'>Home</a></li>
+            <li><a class=link id='read' href='#'>Read the Bible</a></li>
+            <li><a class=link id='topic' href='#'>Search by Topic</a></li>
+        </ul>
+    </nav>
+
+
     <h1 class='heading'>Bible API Project</h1>
 
+    <div id='bible' class='hidden'>
+        <section class='books'>
+            <h2>Books</h2>
+            <ul id='books'>
+            </ul>
+        </section class='chapters'>
+            <h2>Chapters</h2>
+            <ul id='chapters'>
+            </ul>
+        <section id="verses">
+        </section>
+    </div>
+
+    <div id='search'class='hidden'>
     <form>
         <input type='text' id='searchQuery' name='searchQuery'
-        placeholder='search'>
+        placeholder='search by keyword'>
         <button type='submit'>Go</button>
     </form>
     <section id='results' class='hidden'>
         <h1> Results</h1>
         <ul id='resultsList'></ul>
     </section>
-    <section id="chapter" class='hidden'>
+    <section id="context" class='hidden'>
     </section>
-    <section class='daily'>
+    </div>
+
+    <section id='daily'>
         <h1>Daily Verse</h1>
         <div id='dailyVerse'>
         </div>
@@ -32,5 +57,6 @@
     
     <script src='index.js'></script>
     <script src='verse.js'></script>
+    <script src='bible.js'></script>
 </body>
 </html>

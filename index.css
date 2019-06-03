@@ -8,8 +8,36 @@
 }
 body{
     margin: auto;
-    width: 50%;
+    width: 80%;
 }
 form, .heading{
     text-align: center;
+}
+.book-link, .chapter-link{
+    display: inline-flex;
+    flex-direction: column;
+    border: solid black 1px;
+    width: 30%;
+    height: 50px;
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    font-size: 15px;
+}
+.search-book{
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+}
+.links{
+    display: inline-flex;
+    width: 100%;
+    justify-content: flex-end;
+    background-color: teal;
+    
+}
+.link{
+    text-decoration: none;
+    color: white;
+    padding: 30px;
 }
