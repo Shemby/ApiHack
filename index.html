@@ -23,20 +23,27 @@
     <h1 class='heading'>Bible API Project</h1>
 
     <div id='bible' class='hidden'>
-        <section class='books'>
+        <section id='books'>
             <h2>Books</h2>
-            <ul id='books'>
-            </ul>
-        </section class='chapters'>
+            <a href='#' id='back-to-home'>&lt;--Back to Home</a></br>
+            <div id='book-names'>
+            </div>
+        </section>
+        <section id='chapters'>
             <h2>Chapters</h2>
-            <ul id='chapters'>
-            </ul>
+            <a href='#' id='back-to-books'>&lt;--Back to Books</a></br>
+        </section>
         <section id="verses">
+            <h1 id='verse-heading'></h1>
+            <a href='#' id='back-to-chapters'>&lt;--Back to Chapters</a></br>
+            <p id='content'></p>
+            <div id='links'>
+            </div>
         </section>
     </div>
 
     <div id='search'class='hidden'>
-    <form>
+    <form id='search-form' name='search-form'>
         <input type='text' id='searchQuery' name='searchQuery'
         placeholder='search by keyword'>
         <button type='submit'>Go</button>
@@ -58,5 +65,6 @@
     <script src='index.js'></script>
     <script src='verse.js'></script>
     <script src='bible.js'></script>
+    <script src='search.js'></script>
 </body>
 </html>

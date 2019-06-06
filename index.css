@@ -41,3 +41,6 @@ form, .heading{
     color: white;
     padding: 30px;
 }
+.prev-chapter, .next-chapter, .chapter-next, .chapter-prev{
+    padding: 30px 30px 30px 30px;
+}
