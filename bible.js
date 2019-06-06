@@ -38,7 +38,6 @@ function displayVerses(responseJson){
         <a href='#' class='chapter-next' data-next='${responseJson.data.next.id}'>Next Chapter</a>`);
 }
 function prev(event){
-    $('#verses').empty();
     event.preventDefault();
     const chapterLink = $(event.target);
     const chapterId = chapterLink.data('prev');
