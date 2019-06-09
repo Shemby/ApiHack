@@ -69,6 +69,7 @@ function listen() {
         event.preventDefault();
         $('#results').removeClass('hidden');
         $('#context').addClass('hidden');
+        $('form').removeClass('hidden');
     });
 
     $('#bible').on('click', '.book-link', (event)=>{
@@ -95,6 +96,9 @@ function listen() {
         event.preventDefault();
         $('#chapters').removeClass('hidden');
         $('#verses').addClass('hidden');
+      });
+      $('nav').on('click', function(){
+          $('#links').toggleClass('open');
       });
       
 }

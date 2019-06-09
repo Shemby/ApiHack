@@ -17,7 +17,7 @@ function getChapters(event){
     goFetch(`/books/${bookId}/chapters`, displayChapters);
 }
 function displayChapters(responseJson){
-    $('#chapters').append(responseJson.data.map(i =>{
+    $('#chapter-names').html(responseJson.data.map(i =>{
         return `
         <a href="#"class='chapter-link'data-chapter='${i.id}'>${i.reference}</a>`
     }))
@@ -33,9 +33,9 @@ function getVerses(event){
 function displayVerses(responseJson){
     $('#verse-heading').html(`${responseJson.data.reference}`);
     $('#content').html(`${responseJson.data.content}`);
-    $('#links').html(`
-        <a href='#' class='chapter-prev' data-prev='${responseJson.data.previous.id}'>Previous Chapter</a>
-        <a href='#' class='chapter-next' data-next='${responseJson.data.next.id}'>Next Chapter</a>`);
+    $('#bible-links').html(`
+        <a href='#' class='chapter-prev' data-prev='${responseJson.data.previous.id}'>&laquo;</a>
+        <a href='#' class='chapter-next' data-next='${responseJson.data.next.id}'>&raquo;</a>`);
 }
 function prev(event){
     event.preventDefault();

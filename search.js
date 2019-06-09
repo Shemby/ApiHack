@@ -13,7 +13,7 @@ function displaySearch(responseJson){
         <li>
         <h3>${o.reference}</h3>
         <p>"${o.text}"</p>
-        <a href=""class='context-link' data-context='${o.chapterId}'>view entire chapter</a>
+        <a href=""class='context-link' data-context='${o.chapterId}'>view entire chapter &raquo</a>
         </li>`;
     }));
 }
@@ -28,13 +28,15 @@ function getContext(event){
 }
 function displayContext(responseJson){
     $('#results').addClass('hidden');
-    $('#context').removeClass('hidden').html(`
-    <h1>${responseJson.data.reference}</h1>
-    <a href='#' class="return-link"><-- Return to search results</a>
-    <p>${responseJson.data.content}</p>
-    <a href='#' class='prev-chapter' data-prev='${responseJson.data.previous.id}'>Previous Chapter</a>
-    <a href='#' class='next-chapter' data-next='${responseJson.data.next.id}'>Next Chapter</a>`
-    );
+    $('form').addClass('hidden');
+    $('#context').removeClass('hidden');
+    $('#passage').html(`
+    <a href='#' class="return-link">&laquo;</a>
+    <h1 class='heading'>${responseJson.data.reference}</h1>
+    <p>${responseJson.data.content}</p>`);
+    $('#links-bible').html(`
+    <a href='#' class='prev-chapter' data-prev='${responseJson.data.previous.id}'>&laquo;</a>
+    <a href='#' class='next-chapter' data-next='${responseJson.data.next.id}'>&raquo;</a>`);
 }
 function getPrev(event){
     event.preventDefault();

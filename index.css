@@ -1,46 +1,255 @@
 *{
     box-sizing: border-box;
     list-style-type: none;
+    text-decoration: none;
+}
+span.v {
+    font-size: 8pt;
+    display: inline-block;
+    vertical-align: super;
+    padding-right: 5px;
+    color: rgb(6, 124, 31);
 }
 
 .hidden{
     display: none;
 }
 body{
-    margin: auto;
-    width: 80%;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding-bottom: 40px;
 }
-form, .heading{
+html {
+    font-family: 'Lora', serif;
+}
+nav{
+    padding-bottom: 40px;
+}
+.hamburger{
+    cursor: pointer;
+    color: white;
+    font-size: 30px;
+    padding-right: 20px;
+    display:block;
+    width:100%;
+    text-align:right;
+    margin: 0;
+    background-color: rgb(88, 90, 88);
+    height: 40px;
+}
+#links{
+    width: 100%;
+    background-color: rgb(88, 90, 88);
+    margin: 0;
+    padding: 0;
+    height: 0;
+    overflow: hidden;
+}
+#links li{
+    float: none;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    border-bottom: 2px solid rgb(6, 124, 31);
+}
+.link{
+    color: white;
+    padding: 10px;
+    display: block;
+}
+#links.open{
+    height: auto;
+}
+#title{
+    text-align: center;
+    border: 2px solid rgb(6, 124, 31);
+    width: 80%;
+    margin: auto;
+    font-size: 1.5em;
+}
+.heading{
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: underline;
+    text-decoration-color: rgb(6, 124, 31);
+}
+.reference{
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: underline;
+    text-decoration-color: rgb(6, 124, 31);
+}
+#daily h2{
+    margin-top: 50px;
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-color: rgb(6, 124, 31);
+}
+#daily div{
+    width: 80%;
+    margin: auto;
+    padding: 0 5% 0 5%;
+    border: 1px solid rgb(6, 124, 31);
+}
+#book-names, #chapter-names{
     text-align: center;
 }
 .book-link, .chapter-link{
-    display: inline-flex;
-    flex-direction: column;
-    border: solid black 1px;
-    width: 30%;
-    height: 50px;
-    text-decoration: none;
+    display: inline-block;
+    border: 1px solid rgb(6, 124, 31);
+    width: 45%;
     color: black;
-    padding: 10px;
-    font-size: 15px;
+    text-align: center;
+    height: 40px;
+    margin: 2px;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    box-shadow: 2px 3px rgb(88, 90, 88);
 }
-.search-book{
-    cursor: pointer;
-    color: blue;
-    text-decoration: underline;
-}
-.links{
-    display: inline-flex;
-    width: 100%;
-    justify-content: flex-end;
-    background-color: teal;
-    
-}
-.link{
-    text-decoration: none;
+.book-link:hover, .chapter-link:hover{
+    transition: .25s;
+    transition-timing-function: ease-in-out;
+    background-color: rgb(88, 90, 88);
     color: white;
-    padding: 30px;
+    box-shadow: 2px 2px 2px 2px white;
 }
-.prev-chapter, .next-chapter, .chapter-next, .chapter-prev{
-    padding: 30px 30px 30px 30px;
+#books h2, #chapters h2, #verses h2{
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-color: rgb(6, 124, 31);
+    font-size: 35px;
+}
+#back-to-books, #back-to-home, #back-to-chapters, .return-link{
+    display: block;
+    color: black;
+    border: 2px solid rgb(6, 124, 31);
+    margin-left: 5%;
+    width: 40px;
+    height: 40px;
+    font-size: 25px;
+    border-radius: 50%;
+    text-align: center;
+}
+#back-to-books:hover, #back-to-home:hover, #back-to-chapters:hover, .return-link:hover{
+    transition: .25s;
+    transition-timing-function: ease-in-out;
+    background-color: rgb(88, 90, 88);
+    color: white;
+}
+#content{
+    padding: 0 5% 0 5%;
+}
+#bible-links{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+.chapter-prev, .chapter-next{
+    display: inline-block;
+    color: black;
+    border: 2px solid rgb(6, 124, 31);
+    width: 40px;
+    height: 40px;
+    font-size: 25px;
+    text-align: center;
+    border-radius: 50%;
+    position: relative;
+    background-color: white;
+}
+.chapter-prev{
+    float: left;
+    margin-left: 15%;
+}
+.chapter-next{
+    float: right;
+    margin-right: 15%;
+}
+.chapter-prev:hover, .chapter-next:hover{
+    transition: .25s;
+    transition-timing-function: ease-in-out;
+    background-color: rgb(88, 90, 88);
+    color: white;
+}
+#book-names, #content, #chapter-names{
+    margin-top: 40px;
+}
+#search-form{
+    margin-top: 100px;
+    text-align: center;
+}
+button{
+    display: inline-block;
+    border: 1px solid rgb(6, 124, 31);
+    width: 80px;
+    color: black;
+    text-align: center;
+    height: 30px;
+    margin: 2px;
+    cursor: pointer;
+    background-color: white;
+}
+button:hover{
+    transition: .25s;
+    transition-timing-function: ease-in-out;
+    background-color: rgb(88, 90, 88);
+    color: white;
+    box-shadow: 2px 2px 2px 2px white;
+}
+#results{
+    margin-top: 50px;
+}
+#results h1{
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-color: rgb(6, 124, 31);
+}
+#results h3{
+    font-family: 'Montserrat', sans-serif;
+}
+.context-link{
+    color: black;
+    text-decoration: underline;
+    text-decoration-color: rgb(6, 124, 31);
+    cursor: pointer;
+}
+.prev-chapter, .next-chapter{
+    display: inline-block;
+    color: black;
+    border: 2px solid rgb(6, 124, 31);
+    width: 40px;
+    height: 40px;
+    font-size: 25px;
+    text-align: center;
+    border-radius: 50%;
+    position: relative;
+    background-color: white;
+}
+.prev-chapter{
+    float: left;
+    margin-left: 15%;
+}
+.next-chapter{
+    float: right;
+    margin-right: 15%;
+}
+.prev-chapter:hover, .next-chapter:hover{
+    transition: .25s;
+    transition-timing-function: ease-in-out;
+    background-color: rgb(88, 90, 88);
+    color: white;
+}
+#links-bible{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+#passage p{
+    padding: 0 5% 0 5%;
+}
+#passage h1{
+    text-align: center;
+}
+.return-link{
+    margin-top: 40px;
 }
