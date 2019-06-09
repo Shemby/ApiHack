@@ -4,6 +4,11 @@ const baseUrl = 'https://api.scripture.api.bible/v1/bibles/9879dbb7cfe39e4d-04'
 const myHeaders = new Headers();
       myHeaders.append('api-key', 'e905c2f122905efe6cee397e81d3904a');
 
+function topFunction(event){
+    event.preventDefault();
+    document.documentElement.scrollTop = 0;
+    }
+
 function goFetch(query, display){
     const url = `${baseUrl}${query}`;
     return fetch(url,{
@@ -59,10 +64,14 @@ function listen() {
 
     $('#books').on('click', '.book-link', getChapters); 
     $('#chapters').on('click', '.chapter-link', getVerses);
+    $('#context').on('click', '.prev-chapter', topFunction);
     $('#context').on('click', '.prev-chapter', getPrev);
     $('#context').on('click', '.next-chapter', getNext);
+    $('#context').on('click', '.next-chapter', topFunction);
     $('#verses').on('click', '.chapter-prev', prev);
+    $('#verses').on('click', '.chapter-prev', topFunction);
     $('#verses').on('click', '.chapter-next', next);
+    $('#verses').on('click', '.chapter-next', topFunction);
 
 
     $('#context').on('click', '.return-link', (event) =>{
