@@ -14,3 +14,6 @@ The Search by Topic link will take you to a search bar.</br></br>
   The verse that your keyword is in is displayed.</br>
   Click 'read full chapter' to read the verse in the context of the entire chapter.</br>
   next, previous, and back to results links are included on the page displaying the entire chapter.</p>
+  </br>
+  </br>
+  <a href='https://shemby.github.io/ApiHack'>Live App</a>
