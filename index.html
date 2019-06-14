@@ -20,20 +20,25 @@
             <li><a class=link id='topic' href='#'>Search by Topic</a></li>
         </ul>
     </nav>
+
     <div id='bible' class='hidden'>
+
         <section id='books'>
             <a href='#' id='back-to-home'>&laquo;</a>
             <h2 class='heading'>Books</h2>
-            <div id='book-names'>
+            <div class='wrapper'>
+                <div id='book-names'></div>
             </div>
         </section>
+
         <section id='chapters'>
             <a href='#' id='back-to-books'>&laquo;</a>
             <h2 class='heading'>Chapters</h2>
-            <div id='chapter-names'>
+            <div class='wrapper'>
+                <div id='chapter-names'></div>
             </div>
-            
         </section>
+
         <section id="verses">
             <a href='#' id='back-to-chapters'>&laquo;</a>
             <h2 id='verse-heading'class='heading'></h2>
@@ -41,13 +46,14 @@
             <div id='bible-links'>
             </div>
         </section>
+
     </div>
 
     <div id='search'class='hidden'>
     <h1 id='title' class='heading'>BIBLE ASSISTANT</h1>
     <form id='search-form' name='search-form'>
         <input type='text' id='searchQuery' name='searchQuery'
-        placeholder='search by keyword'>
+        placeholder='Search by Keyword'>
         <button type='submit'>Search</button>
     </form>
     <section id='results' class='hidden'>
