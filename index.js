@@ -1,14 +1,14 @@
 'use strict';
-
+//creates the base url for sending requests to the API.
 const baseUrl = 'https://api.scripture.api.bible/v1/bibles/9879dbb7cfe39e4d-04'
 const myHeaders = new Headers();
       myHeaders.append('api-key', 'e905c2f122905efe6cee397e81d3904a');
-
+//used to scroll to the top of the page when selecting new chapters.
 function topFunction(event){
     event.preventDefault();
     document.documentElement.scrollTop = 0;
     }
-
+//Modular fetch function
 function goFetch(query, display){
     const url = `${baseUrl}${query}`;
     return fetch(url,{
@@ -25,7 +25,7 @@ function goFetch(query, display){
         $('#error-message').text(`something went wrong: ${err.message}`);
     });
     }
-
+    //These functions hide and display the appropriate pages when links are clicked.
     function home(){
         $('#bible').addClass('hidden');
         $('#search').addClass('hidden');
@@ -48,7 +48,7 @@ function goFetch(query, display){
         $('#context').addClass('hidden');
         $('form').removeClass('hidden');
     }
-
+    //This function contains the event listeners.
 function listen() {
     $('form').submit (event => {
         event.preventDefault();

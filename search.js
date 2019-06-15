@@ -1,10 +1,11 @@
 'use-strict';
-
+//gets user input for the search query
 function getSearch(userInput){
     $('.daily').addClass('hidden');
     $('#results').removeClass('hidden');
    goFetch(`/search?query=${userInput}`, displaySearch);
 }
+//displays search results
 function displaySearch(responseJson){
     let totalResults = responseJson.data.total;
     if (totalResults>0){
@@ -20,12 +21,14 @@ function displaySearch(responseJson){
     else{
         $('#resultsList').html(`<h3>Your search returned no results.</h3>`)
 }}
+//gets entire chapter when user clicks on the view entire chapter link in search results
 function getContext(event){
     event.preventDefault();
     const contextLink = $(event.target);
     const contextId = contextLink.data('context');
     goFetch(`/chapters/${contextId}`, displayContext);
 }
+//displays chapter when view entire chapter is clicked in search results
 function displayContext(responseJson){
     $('#results').addClass('hidden');
     $('form').addClass('hidden');
@@ -38,12 +41,14 @@ function displayContext(responseJson){
     <a href='#' class='prev-chapter' data-prev='${responseJson.data.previous.id}'>&laquo;</a>
     <a href='#' class='next-chapter' data-next='${responseJson.data.next.id}'>&raquo;</a>`);
 }
+//displays previous chapter
 function getPrev(event){
     event.preventDefault();
     const contextLink = $(event.target);
     const contextId = contextLink.data('prev');
     goFetch(`/chapters/${contextId}`, displayContext);
 }
+//displays next chapter
 function getNext(event){
     event.preventDefault();
     const contextLink = $(event.target);

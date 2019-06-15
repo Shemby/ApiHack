@@ -1,5 +1,5 @@
 'use-strict';
-
+//array containing verse references for calling the api for daily verse
 const VERSES = [
     'ROM.8.28',
     'PHP.3.7-PHP.3.8',
@@ -33,12 +33,14 @@ const VERSES = [
     'COL.3.17',
     'PHP.2.3-PHP.2.4'
 ];
+//calls api for daily verse
 function getDaily(){
     let today = new Date();
     let dd = (today.getDate());
     let todaysVerse = VERSES[dd-1];
     goFetch(`/passages/${todaysVerse}`, displayDaily);
 }
+//displays daily verse
 function displayDaily(responseJson){
     $('#dailyVerse').html(`<li><h3 class='reference'>${responseJson.data.reference}</h3>
     <p>${responseJson.data.content}</p>
