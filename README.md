@@ -40,3 +40,5 @@ The read the bible link will take you to a page with all the books of the bible 
   </br>
   </br>
   <a href='https://shemby.github.io/ApiHack'>Click here to see the live app</a>
+  </br>
+  This app was made using CSS, HTML, JavaScript, and JQuery.
